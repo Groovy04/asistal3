@@ -22,7 +22,7 @@ bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://tansubaktiran:Avz9p9&9Dgsu_099@193.111.73.99/tansubaktiran"
 
 #Secret key
-app.config['SECRET_KEY'] = "MYTESTKEY"
+app.config['SECRET_KEY'] = ""
 #Initialize the adatabase
 db = SQLAlchemy(app)
 
