@@ -1,0 +1,105 @@
+<style>
+    .error {
+    color: red;
+    border: 2px solid red;
+}
+    .success {
+    color: limegreen;
+    border: 2px solid limegreen;
+}
+
+</style>
+
+
+{% extends "base.html" %}
+
+{% block content %}
+</br></br></br>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <div class="{{ category }}">{{ message }}</div>
+  {% endfor %}
+{% endwith %}
+
+</br>
+
+
+<p><h3> Assist - Değerlendirme Bekleyen İşlerimin Listesi </h3></p>
+
+
+
+<h3>Uzman Adı : {{ user_name }} </h3></br>
+<h3> Bekleyen İşler </h3>
+
+    <div class="shadow p-3 mb-5 mt-1 bg-body rounded">
+        <table>
+            <tr>
+                <th style="width:5%">1- ID </th>
+                <th style="width:8%">2- ASISTAL REF</th>
+                <th style="width:8%">3- MÜŞTERİ ADI</th>
+                <th style="width:8%">4- MÜŞTERİ TEMSİLCİSİ</th>
+                <th style="width:8%">5- KAYIT TARİHİ & SAATİ</th>
+                <th style="width:8%">6- DETAYLARI GÖRÜNTÜLE</th>
+                
+            </tr>
+        {% for work in pending_works %}            
+            <tr>
+                <td>{{ work.id }} </td>
+                <td> {{ work.asistal_id_db }} </td>
+                <td> {{ work.customer_name_db }} </td>
+                <td> {{ work.sales_rep_db }} </td>
+                <td> {{ work.user1_evaluation_date_db }}</td>
+                <td> <a href="{{url_for('view_in_detail',id=work.id)}}">DETAYLARI GÖR</a></td>
+                
+            </tr>
+        {% endfor %}
+        </table>
+    
+        
+    </div>
+
+{% if user_role == 'user1' %} 
+
+<h3> Reddedilen İşler </h3>
+
+    <div class="shadow p-3 mb-5 mt-1 bg-body rounded">
+        <table>
+            <tr>
+                <th style="width:5%">1- ID </th>
+                <th style="width:8%">2- ASISTAL REF</th>
+                <th style="width:8%">3- MÜŞTERİ ADI</th>
+                <th style="width:8%">4- MÜŞTERİ TEMSİLCİSİ</th>
+                <th style="width:8%">5- KAYIT TARİHİ & SAATİ</th>
+                <th style="width:8%">6- DETAYLARI GÖRÜNTÜLE</th>
+                
+            </tr>
+        {% for work in rejected_works %}            
+            <tr>
+                <td>{{ work.id }} </td>
+                <td> {{ work.asistal_id_db }} </td>
+                <td> {{ work.customer_name_db }} </td>
+                <td> {{ work.sales_rep_db }} </td>
+                <td> {{ work.user1_evaluation_date_db }}</td>
+                <td> <a href="{{url_for('view_in_detail',id=work.id)}}">DETAYLARI GÖR</a></td>
+                
+            </tr>
+        {% endfor %}
+        </table></br>
+        
+    
+        
+    </div>
+    <a href="{{url_for('view_all_works')}}" button type="button" class="btn btn-warning">Tüm İşleri Gör</a>
+{% endif %}
+
+
+
+
+
+</br></br>
+<hr>
+
+<p><b>Asistal - Work Process Follow Up</p>
+
+{% endblock content %}

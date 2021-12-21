@@ -1,0 +1,132 @@
+<head>
+    <style>
+    
+    #myform {
+        width: 80%;
+    }
+    #mytable {
+        border-spacing: 0px;
+    }
+    </style>
+</head>
+{% extends "base.html"%}
+
+
+{%block content%}
+
+
+
+<br/><br/><br/>
+<p><h3> Asistal Assist System - Üretilebilirlik Süreci - İş Detayları ve Departman Değerlendirme Ekranı </h3></p>
+
+<br/><br/>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+
+</br><h4>İşin Detayları</h4>
+
+    <table style="width:100%", id="mytable" class="table table-hover table-bordered table-striped">
+        <tr><td style="width:15%">Asistal ID : </td> <td>{{ work_to_show.asistal_id_db }} </td> </tr>    
+        <tr><td>Müşteri İsmi : </td> <td>{{ work_to_show.customer_name_db }} </td>  <td style="width:2%"> </td> <td style="width:15%">Satış Temsilcisi E-mail : </td> <td>{{ work_to_show.sales_rep_db }} </td></tr>
+        <tr><td>Versiyon No : </td> <td>{{ work_to_show.version_db }} </td> </td> <td></td><td >Kayıt Tarihi ve Saati : </td> <td>{{ work_to_show.date_added_db }} </td> </tr>
+        <tr> <td>Müşteri Çizim Bilgisi : </td> <td>{{ work_to_show.customer_drawing_db }} </td> </td> <td></td><td>Teklif Talep Şekli : </td> <td>{{ work_to_show.offer_demand_type_db }} </td> </tr>
+        
+        <tr><td>Mekanik İşlem : </td> <td>{{ work_to_show.mechanical_process_db }} </td> <td> </td> <td>Isı Bariyer : </td> <td>{{ work_to_show.heat_barrier_db }} </td>  </tr>
+        <tr><td>3.1 Sertifika Talebi : </td> <td>{{ work_to_show.demand_for_31_certificate_db }} </td> <td> </td> <td>Profil Boyu : </td> <td>{{ work_to_show.profile_length_db }} </td>  </tr>
+        
+        <tr><td>Alaşım : </td> <td>{{ work_to_show.compound_db }} </td> <td></td> <td>Kondüsyon : </td> <td>{{ work_to_show.condition_db }} </td></tr>
+        <tr><td>Fonksiyonel Aparat veya Profil : </td> <td>{{ work_to_show.additional_equipment_db }} </td> <td></td> <td>Fonksiyonel Aparat veya Profil Açıklaması: </td> <td>{{ work_to_show.additional_equipment_explanation_db }} </td></tr>
+        <tr><td>Görünür Yüzey: </td> <td>{{ work_to_show.visible_surface_db }} </td>  <td></td> <td>Yüzey : </td> <td>{{ work_to_show.surface_db }} </td></tr>
+        <tr> <td>Eloksal Kaplama Kalınlığı: </td> <td>{{ work_to_show.elocsal_coating_thickness_db }} </td><td><td>Sipariş Miktarı(kg.): </td> <td>{{ work_to_show.order_amount_in_kg_db }} </td> </tr>
+        <tr><td>Askı İzi: </td> <td>{{ work_to_show.hanging_print_db }} </td> <td></td> <td>Askı İzi Açıklaması: </td> <td>{{ work_to_show.hanging_print_explanation_db }} </td></tr>
+        <tr> <td>Profil Kesit Ölçü Toleransı: </td> <td>{{ work_to_show.profile_section_measure_tolerance_db }} </td></tr>    
+        <tr> <td colspan="5" style="color:red;"><b>Teknik Ofis Bilgileri</b></td></tr>
+        <tr><td>Teknik Ofis Referans No: </td> <td>{{ work_to_show.order_no_db }} </td> </tr>
+        <tr><td>Çevre: </td> <td>{{ work_to_show.circumference_db }} </td> <td></td> <td>Alan: </td> <td>{{ work_to_show.area_db }} </td></tr>
+        <tr><td>Gramaj: </td> <td>{{ work_to_show.weight_in_gr_db }} </td> <td></td> <td>Pres: </td> <td>{{ work_to_show.press_db }} </td></tr>
+        <tr><td>Zorluk Derecesi: </td> <td>{{ work_to_show.difficulty_db }} </td> </tr>
+        
+    </table>
+
+</br><h4>Bölüm Değerlendirmeleri ve Yorumlar</h4>
+
+
+
+    <table style="width:100%", id="mytable" class="table table-hover table-bordered table-striped">
+        
+        <tr>
+        <td style="width:15%">Satış Bölümü Onayı : </td> <td style="width:15%">{{ work_to_show.user1_evaluation_db }} </td> 
+        <td style="width:15%">Satış Değerlendirme ve Yorumlar : </td> <td style="width:15%">{{ work_to_show.user1_evaluation_explanation_db }} </td> 
+        <td style="width:15%">Satış Değerlendirme Tarihi ve Saati: </td><td>{{ work_to_show.user1_evaluation_date_db }} </td> 
+        </tr>
+        <tr>
+            <td style="width:15%">Teknik Ofis Onayı : </td> <td style="width:15%">{{ work_to_show.user2_evaluation_db }} </td> 
+            <td style="width:15%">Teknik Ofis Değerlendirme ve Yorumlar : </td> <td style="width:15%">{{ work_to_show.user2_evaluation_explanation_db }} </td> 
+            <td style="width:15%">Teknik Ofis Değerlendirme Tarihi ve Saati : </td><td>{{ work_to_show.user2_evaluation_date_db }} </td> 
+        </tr>
+        <tr>
+            <td style="width:15%">Ekstrüzyon Bölümü Onayı : </td> <td style="width:15%">{{ work_to_show.user3_evaluation_db }} </td> 
+            <td style="width:15%">Ekstrüzyon Bölümü Değerlendirme ve Yorumlar : </td> <td style="width:15%">{{ work_to_show.user3_evaluation_explanation_db }} </td> 
+            <td style="width:15%">Ekstrüzyon Bölümü Değerlendirme Tarihi ve Saati : </td><td>{{ work_to_show.user3_evaluation_date_db }} </td> 
+        </tr>
+        <tr>
+            <td style="width:15%">Eloksal Bölümü Onayı : </td> <td style="width:15%">{{ work_to_show.user4_evaluation_db }} </td> 
+            <td style="width:15%">Eloksal Bölümü Değerlendirme ve Yorumlar : </td> <td style="width:15%">{{ work_to_show.user4_evaluation_explanation_db }} </td> 
+            <td style="width:15%">Eloksal Bölümü Değerlendirme Tarihi ve Saati : </td><td>{{ work_to_show.user4_evaluation_date_db }} </td> 
+        </tr>
+        
+        <tr>
+            <td style="width:15%">Boyahane Bölümü Onayı : </td> <td style="width:15%">{{ work_to_show.user5_evaluation_db }} </td> 
+            <td style="width:15%">Boyahane Bölümü Değerlendirme ve Yorumlar : </td> <td style="width:15%">{{ work_to_show.user5_evaluation_explanation_db }} </td> 
+            <td style="width:15%">Boyahane Bölümü Değerlendirme Tarihi ve Saati : </td><td>{{ work_to_show.user5_evaluation_date_db }} </td> 
+        </tr>
+        
+        <tr>
+            <td style="width:15%">Mekanik İşlem Bölümü Onayı : </td> <td style="width:15%">{{ work_to_show.user6_evaluation_db }} </td> 
+            <td style="width:15%">Mekanik İşlem Bölümü Değerlendirme ve Yorumlar : </td> <td style="width:15%">{{ work_to_show.user6_evaluation_explanation_db }} </td> 
+            <td style="width:15%">Mekanik İşlem Bölümü Değerlendirme Tarihi ve Saati : </td><td>{{ work_to_show.user6_evaluation_date_db }} </td> 
+        </tr>
+
+        <tr>
+            <td style="width:15%">Isı Bariyer Bölümü Onayı : </td> <td style="width:15%">{{ work_to_show.user7_evaluation_db }} </td> 
+            <td style="width:15%">Isı Bariyer Bölümü Değerlendirme ve Yorumlar : </td> <td style="width:15%">{{ work_to_show.user7_evaluation_explanation_db }} </td> 
+            <td style="width:15%">Isı Bariyer Bölümü Değerlendirme Tarihi ve Saati : </td><td>{{ work_to_show.user7_evaluation_date_db }} </td> 
+        </tr>
+    </table>
+
+{% if user_role == 'user1' %} 
+<a href="{{url_for('add_new_work_version',id=work_to_show.id)}}" button type="button" class="btn btn-warning">Yeni Versiyon Ekle</a>
+{% endif %}
+
+{% if user_role != 'user1' %}
+{% if name %}
+    <b><h3> Hello {{name}}! How are you today? </h3></b>
+{% else %}
+    <br/>
+    <form method="POST", id="myform">
+        {{form.hidden_tag()}}
+        
+        <table style="width:100%", id="mytable">
+        
+        <tr><td>{{form.user_evaluation.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.user_evaluation(class="form-control")}} </td> </tr>
+        
+        <tr><td>{{form.user_evaluation_explanation.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.user_evaluation_explanation(class="form-control")}} </td> </tr>             
+                
+        </table>
+        <br/>
+        {{form.submit(class="btn btn-outline-primary")}}
+    </form>
+{% endif %}
+
+
+    
+
+
+{% endif %}
+<br/><br/>
+<p><b>Asistal - Assist System</b> / Version - December 2021-03 Tests - New Work Entry and Production Approval Process </p>
+
+{%endblock%}

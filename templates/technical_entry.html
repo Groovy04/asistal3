@@ -1,0 +1,88 @@
+<head>
+    <style>
+    
+    #myform {
+        width: 80%;
+    }
+    #mytable {
+        border-spacing: 0px;
+    }
+    </style>
+</head>
+{% extends "base.html"%}
+
+
+{%block content%}
+
+
+
+<br/><br/><br/>
+<p><h3> Asistal Assist System - Üretilebilirlik Süreci - İş Detayları ve Teknik Ofis Bilgi Giriş Ekranı </h3></p>
+
+<br/><br/>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+
+<table style="width:100%", id="mytable" class="table table-hover table-bordered table-striped">
+    <tr><td style="width:15%">Asistal ID : </td> <td>{{ work_to_show.asistal_id_db }} </td> </tr>    
+    <tr><td>Müşteri İsmi : </td> <td>{{ work_to_show.customer_name_db }} </td>  <td style="width:2%"> </td> <td style="width:15%">Satış Temsilcisi E-mail : </td> <td>{{ work_to_show.sales_rep_db }} </td></tr>
+    <tr><td>Versiyon No : </td> <td>{{ work_to_show.version_db }} </td> </td> <td></td><td >Kayıt Tarihi ve Saati : </td> <td>{{ work_to_show.date_added_db }} </td> </tr>
+    <tr> <td>Müşteri Çizim Bilgisi : </td> <td>{{ work_to_show.customer_drawing_db }} </td> </td> <td></td><td>Teklif Talep Şekli : </td> <td>{{ work_to_show.offer_demand_type_db }} </td> </tr>
+    
+    <tr><td>Mekanik İşlem : </td> <td>{{ work_to_show.mechanical_process_db }} </td> <td> </td> <td>Isı Bariyer : </td> <td>{{ work_to_show.heat_barrier_db }} </td>  </tr>
+    <tr><td>3.1 Sertifika Talebi : </td> <td>{{ work_to_show.demand_for_31_certificate_db }} </td> <td> </td> <td>Profil Boyu : </td> <td>{{ work_to_show.profile_length_db }} </td>  </tr>
+    
+    <tr><td>Alaşım : </td> <td>{{ work_to_show.compound_db }} </td> <td></td> <td>Kondüsyon : </td> <td>{{ work_to_show.condition_db }} </td></tr>
+    <tr><td>Fonksiyonel Aparat veya Profil : </td> <td>{{ work_to_show.additional_equipment_db }} </td> <td></td> <td>Fonksiyonel Aparat veya Profil Açıklaması: </td> <td>{{ work_to_show.additional_equipment_explanation_db }} </td></tr>
+    <tr><td>Görünür Yüzey: </td> <td>{{ work_to_show.visible_surface_db }} </td>  <td></td> <td>Yüzey : </td> <td>{{ work_to_show.surface_db }} </td></tr>
+    <tr> <td>Eloksal Kaplama Kalınlığı: </td> <td>{{ work_to_show.elocsal_coating_thickness_db }} </td><td><td>Sipariş Miktarı(kg.): </td> <td>{{ work_to_show.order_amount_in_kg_db }} </td> </tr>
+    <tr><td>Askı İzi: </td> <td>{{ work_to_show.hanging_print_db }} </td> <td></td> <td>Askı İzi Açıklaması: </td> <td>{{ work_to_show.hanging_print_explanation_db }} </td></tr>
+    <tr> <td>Profil Kesit Ölçü Toleransı: </td> <td>{{ work_to_show.profile_section_measure_tolerance_db }} </td></tr>    
+    
+
+    
+</table>
+
+
+
+{% if name %}
+    <b><h3> Hello {{name}}! How are you today? </h3></b>
+{% else %}
+    <br/>
+    <form method="POST", id="myform">
+        {{form.hidden_tag()}}
+        
+        <table style="width:100%", id="mytable">
+        
+        <tr><td>{{form.order_no.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.order_no(class="form-control")}} </td> </tr>        
+        <tr><td>{{form.circumference.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.circumference(class="form-control")}} </td> </tr>                
+        <tr><td>{{form.area.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.area(class="form-control")}} </td> </tr>
+        <tr><td>{{form.weight_in_gr.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.weight_in_gr(class="form-control")}} </td> </tr>
+        <tr><td>{{form.press.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.press(class="form-control")}} </td> </tr>
+        <tr><td>{{form.difficulty.label(class="form-label")}} <b> 1- En kolay / 5- En zor </b></td> </tr>
+        <tr><td>{{form.difficulty(class="form-control")}} </td> </tr>
+        <tr><td>{{form.user_evaluation.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.user_evaluation(class="form-control")}} </td> </tr>
+        <tr><td>{{form.user_evaluation_explanation.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.user_evaluation_explanation(class="form-control")}} </td> </tr>
+        </table>
+        <br/>
+        {{form.submit(class="btn btn-outline-primary")}}
+    </form>
+
+
+
+    
+
+
+{% endif %}
+<br/><br/>
+<p><b>Asistal - Assist System</b> / Version - December 2021-03 Tests - New Work Entry and Production Approval Process </p>
+
+{%endblock%}

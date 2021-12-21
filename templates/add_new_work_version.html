@@ -1,0 +1,119 @@
+<head>
+    <style>
+    
+    #myform {
+        width: 80%;
+    }
+    #mytable {
+        border-spacing: 0px;
+    }
+    </style>
+</head>
+{% extends "base.html"%}
+
+
+{%block content%}
+
+
+
+<br/><br/><br/>
+<p><h3> Asistal Assist System - Mevcut İşi Değiştir </h3></p>
+
+<br/><br/>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+
+
+{% if name %}
+    <b><h3> Hello {{name}}! How are you today? </h3></b>
+{% else %}
+    <br/>
+    <form method="POST", id="myform">
+        {{form.hidden_tag()}}
+        
+        <table style="width:100%", id="mytable">
+        
+        <tr><td>{{form.customer_name.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.customer_name(class="form-control")}} </td> </tr>
+        
+        <tr><td>{{form.customer_drawing.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.customer_drawing(class="form-control")}} </td> </tr>
+        
+        <tr><td>{{form.offer_demand_type.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.offer_demand_type(class="form-control")}} </td></tr>
+        
+        <tr><td>{{form.mechanical_process.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.mechanical_process(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.heat_barrier.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.heat_barrier(class="form-control")}} </td> </tr>
+        
+        <tr><td>{{form.demand_for_31_certificate.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.demand_for_31_certificate(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.profile_length.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.profile_length(class="form-control")}} </td> </tr>
+        
+        <tr><td>{{form.compound.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.compound(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.condition.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.condition(class="form-control")}} </td> </tr>
+        
+        <tr><td>{{form.surface.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.surface(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.additional_equipment.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.additional_equipment(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.additional_equipment_explanation.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.additional_equipment_explanation(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.visible_surface.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.visible_surface(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.elocsal_coating_thickness.label(class="form-label")}} </td></tr>
+        <tr><td>{{form.elocsal_coating_thickness (class="form-control")}} </td></tr>
+        
+        <tr><td>{{form.hanging_print.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.hanging_print(class="form-control", type="date")}} </td> </tr>
+        
+        <tr><td>{{form.hanging_print_explanation.label(class="form-label")}} </td></tr>
+        <tr><td>{{form.hanging_print_explanation(class="form-control")}} </td></tr>
+        
+        <tr><td>{{form.order_amount_in_kg.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.order_amount_in_kg(class="form-control")}} </td> </tr>
+        
+        <tr><td>{{form.profile_section_measure_tolerance.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.profile_section_measure_tolerance(class="form-control")}} </td> </tr>
+
+        <tr><td>{{form.sales_dept_approval.label(class="form-label")}} </td> </tr>
+        <tr><td>{{form.sales_dept_approval(class="form-control")}} </td> </tr>
+        
+        
+        </table>
+        <br/>
+        {{form.submit(class="btn btn-outline-primary")}}
+    </form>
+
+
+
+    <p><b>Recorded works are as follows:</b></p>
+
+    <table class="table table-hover table-bordered table-striped table-light">
+        {% for work in all_works %}
+            <tr>
+                <td>{{ work.id }}</td> <td>{{ work.customer_name_db }}</td>
+            </tr>
+        {% endfor %}
+        
+        </table>
+
+
+
+{% endif %}
+<br/><br/>
+<p><b>Asistal - Assist System</b> / Version - December 2021-03 Tests - New Work Entry and Production Approval Process </p>
+
+{%endblock%}
