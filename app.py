@@ -19,8 +19,8 @@ import pandas
 app = Flask(__name__)
 
 bcrypt = Bcrypt(app)
-#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://tansubaktiran:Avz9p9&9Dgsu_099@193.111.73.99/tansubaktiran"
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sql11460522:ycvXfE6mjZ@sql11.freemysqlhosting.net/sql11460522"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://tansubaktiran:Avz9p9&9Dgsu_099@193.111.73.99/tansubaktiran"
+#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sql11460522:ycvXfE6mjZ@sql11.freemysqlhosting.net/sql11460522"
 
 #Secret key
 app.config['SECRET_KEY'] = "MYTESTKEY"
@@ -768,8 +768,8 @@ def dashboard(): #Viewing pending works for relevant department or staff or role
         #print(type(all_works))
         #print(all_works[0].customer_name_db)
         
-        #engine = create_engine("mysql+pymysql://tansubaktiran:Avz9p9&9Dgsu_099@193.111.73.99/tansubaktiran")
-        engine = create_engine("mysql+pymysql://sql11460522:ycvXfE6mjZ@sql11.freemysqlhosting.net/sql11460522")
+        engine = create_engine("mysql+pymysql://tansubaktiran:Avz9p9&9Dgsu_099@193.111.73.99/tansubaktiran")
+        #engine = create_engine("mysql+pymysql://sql11460522:ycvXfE6mjZ@sql11.freemysqlhosting.net/sql11460522")
             
         
         dbconnection = engine.connect()
