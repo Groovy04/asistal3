@@ -274,13 +274,16 @@ def view_pending_works(): #Viewing pending works for relevant department or staf
         # User1 bekleyen işler listesinden çıkarmasını istedik. Eğer gerekli olursa User1'in göreceği şekilde, yeni versiyonu oluşturulduğu için 
         # iptal edilmiş işler listesi de ayrı yerde gösterilebilir.
 
-        try:
-            pending_works = Works_db.query.filter(Works_db.user1_evaluation_db=="Onayla", Works_db.user2_evaluation_db!="Beklemede", Works_db.user3_evaluation_db!="Beklemede", Works_db.user4_evaluation_db!="Beklemede", Works_db.user5_evaluation_db!="Beklemede", 
+        #try:
+        pending_works = Works_db.query.filter(Works_db.user1_evaluation_db=="Onayla", Works_db.user2_evaluation_db!="Beklemede", Works_db.user3_evaluation_db!="Beklemede", Works_db.user4_evaluation_db!="Beklemede", Works_db.user5_evaluation_db!="Beklemede", 
         Works_db.user6_evaluation_db!="Beklemede", Works_db.user7_evaluation_db!="Beklemede", Works_db.user8_evaluation_db!="Beklemede", Works_db.user9_evaluation_db!="Beklemede", Works_db.user10_evaluation_db!="Beklemede")
-            flash("Try Except - Servera pending_works için bağlanırken sorun oluşMADI.", "success")
-        except:
-            flash("Servera pending_works için bağlanırken sorun oluştu.", "success")
 
+        #TO BE DELETED
+        #    flash("Try Except - Servera pending_works için bağlanırken sorun oluşMADI.", "success")
+        #except:
+        #    flash("Servera pending_works için bağlanırken sorun oluştu.", "success")
+        if not (pending_works):
+            raise db.error
         
         
         print("Passed from internal pending works ///")
