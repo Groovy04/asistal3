@@ -20,8 +20,8 @@ import pandas
 app = Flask(__name__)
 
 bcrypt = Bcrypt(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://tansubaktiran:Avz9p9&9Dgsu_099@193.111.73.99/tansubaktiran"
-#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sql11460522:ycvXfE6mjZ@sql11.freemysqlhosting.net/sql11460522"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://tansubaktiran:secret@193.111.73.99/tansubaktiran"
+
 
 #Secret key
 app.config['SECRET_KEY'] = "MYTESTKEY"
